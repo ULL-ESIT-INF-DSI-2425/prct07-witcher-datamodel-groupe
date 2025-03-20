@@ -1,8 +1,11 @@
+import {Ubication, Type, Race, Material} from "./enums.js"
+
+
 /**
  * Interface for identify an element
  */
 export interface Identifiable {
-  ID: number; 
+  id: number; 
   name: string; 
 }
 
@@ -10,26 +13,39 @@ export interface Identifiable {
  * Interface for an ubication
  */
 export interface Ubicable {
-  ubication: string; 
+  /**
+   * Represents the ubication of an object
+   */
+  ubication: Ubication; 
 }
 
 /**
- * Interface for a Goods extends Identifiable 
+ * Interface for a Products extends Identifiable 
  */
-export interface Goods extends Identifiable {
+export interface IProducts extends Identifiable {
   description: string; 
-  material: string
-  weight: number 
-  crowns: number
+  material: Material;
+  weight: number;
+  crowns: number;
 }
 
-export interface Merchants extends Identifiable, Ubicable {
-  type: string
+export interface IMerchants extends Identifiable, Ubicable {
+  type: Type; 
 }
 
 /**
  * Interface 
  */
-export interface Clients extends Identifiable, Ubicable {
-  race: string 
+export interface IClients extends Identifiable, Ubicable {
+  race: Race; 
+}
+
+export interface Transaction<T extends IProducts | IMerchants | IClients> {
+  addEntity(entity: T): boolean; 
+  dropEntity(entity: T): T | undefined; 
+  modifyEntity(entity: T): boolean; 
+}
+
+export interface Inquire<T> {
+  getEntityInfo(type: T) : string;
 }
