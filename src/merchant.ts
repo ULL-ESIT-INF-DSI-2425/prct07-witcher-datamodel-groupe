@@ -49,21 +49,34 @@ export class Merchant extends EntityCollection<Merchant> implements IMerchants{
   
   // Funciones
   addEntity(entity: Merchant): boolean {
-    if (entity._id === 1) {
+    if (this.collection.push(entity)) {
       return true;
     }
     return false;
   }
+
   dropEntity(entity: Merchant): Merchant | undefined {
-    if (entity._id === 1) {
-      return entity;
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      return this.collection.splice(index, 1)[0];
     }
     return undefined;
   }
+
   modifyEntity(entity: Merchant): boolean {
-    if (entity._id === 1) {
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      this.collection[index] = entity;
       return true;
     }
     return false;
+  }
+
+  public getMerchantsByAttribute<K extends keyof Merchant>(attribute: K, value: Merchant[K]): string {
+    const filteredMerchants = this.collection.filter(merchant => merchant[attribute] === value);
+    return filteredMerchants
+      .sort((a, b) => a.id - b.id)
+      .map(merchant => `ID: ${merchant.id}, Name: ${merchant.name}, Type: ${merchant.type}, Ubication: ${merchant.ubication}`)
+      .join('\n');
   }
 }

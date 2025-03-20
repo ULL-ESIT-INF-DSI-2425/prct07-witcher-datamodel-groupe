@@ -19,6 +19,10 @@ export abstract class EntityCollection<T extends IClients | IMerchants | IProduc
   constructor() {
     this.collection = [];
   }
+
+  getNumberOfProducts() {
+    return this.collection.length;
+  }
   
   abstract addEntity(entity: T): boolean;
   abstract dropEntity(entity: T): T | undefined; 

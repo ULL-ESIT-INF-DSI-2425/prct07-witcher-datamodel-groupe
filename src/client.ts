@@ -38,22 +38,43 @@ export class Client extends EntityCollection<Client> implements IClients {
     this._name = value;
   }
 
+  set race(race: Race) {
+    this._race = race; 
+  }
+
+  set ubication(ubication: Ubication) {
+    this._ubication = ubication;
+  }
+
   addEntity(entity: Client): boolean {
-    if (entity._id === 1) {
+    if (this.collection.push(entity)) {
       return true;
     }
     return false;
   }
+
   dropEntity(entity: Client): Client | undefined {
-    if (entity._id === 1) {
-      return entity;
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      return this.collection.splice(index, 1)[0];
     }
     return undefined;
   }
+
   modifyEntity(entity: Client): boolean {
-    if (entity._id === 1) {
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      this.collection[index] = entity;
       return true;
     }
     return false;
+  }
+
+  public getClientsByAttribute<K extends keyof Client>(attribute: K, value: Client[K]): string {
+    const filteredClients = this.collection.filter(client => client[attribute] === value);
+    return filteredClients
+      .sort((a, b) => a.id - b.id)
+      .map(client => `ID: ${client.id}, Name: ${client.name}, Race: ${client.race}, Ubication: ${client.ubication}`)
+      .join('\n');
   }
 }

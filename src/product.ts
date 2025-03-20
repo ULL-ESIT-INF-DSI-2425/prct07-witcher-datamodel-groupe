@@ -65,21 +65,35 @@ export class Product extends EntityCollection<Product> implements IProducts {
   }
 
   addEntity(entity: Product): boolean {
-    if (entity._id === 1) {
+    if (this.collection.push(entity)) {
       return true;
     }
     return false;
   }
+
   dropEntity(entity: Product): Product | undefined {
-    if (entity._id === 1) {
-      return entity;
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      return this.collection.splice(index, 1)[0];
     }
     return undefined;
   }
+  
   modifyEntity(entity: Product): boolean {
-    if (entity._id === 1) {
+    const index = this.collection.findIndex(item => item.id === entity.id);
+    if (index !== -1) {
+      this.collection[index] = entity;
       return true;
     }
     return false;
+  }
+
+
+  public getProductsByAttribute<K extends keyof Product>(attribute: K, value: Product[K]): string {
+    const filteredProducts = this.collection.filter(product => product[attribute] === value);
+    return filteredProducts
+      .sort((a, b) => a.id - b.id)
+      .map(product => `ID: ${product.id}, Name: ${product.name}, Description: ${product.description}, Material: ${product.material}, Weight: ${product.weight}, Crowns: ${product.crowns}`)
+      .join('\n');
   }
 }
