@@ -20,11 +20,37 @@ export abstract class EntityCollection<T extends IClients | IMerchants | IProduc
     this.collection = [];
   }
 
+  /**
+   * getNumberOfProducts method returns the number of products in the collection.
+   * @returns number
+   * @returns the number of products in the collection.
+   * @returns 0 if the collection is empty.
+   */
   getNumberOfProducts() {
     return this.collection.length;
   }
   
+  /**
+   * addEntity method adds an entity to the collection.
+   * @param entity - entity to be added to the collection.
+   * @returns true if the entity is added successfully.
+   * @returns false if the entity is not added.
+   */
   abstract addEntity(entity: T): boolean;
+
+  /**
+   * dropEntity method removes an entity from the collection.
+   * @param entity - entity to be removed from the collection.
+   * @returns the entity that is removed from the collection.
+   * @returns undefined if the entity is not removed.
+   */
   abstract dropEntity(entity: T): T | undefined; 
+
+  /**
+   * modifyEntity method modifies an entity in the collection.
+   * @param entity - entity to be modified in the collection.
+   * @returns true if the entity is modified successfully.
+   * @returns false if the entity is not modified.
+   */
   abstract modifyEntity(entity: T): boolean; 
 }
