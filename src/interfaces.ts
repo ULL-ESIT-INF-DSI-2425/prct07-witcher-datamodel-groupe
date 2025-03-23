@@ -1,4 +1,8 @@
-import {Ubication, Type, Race, Material} from "./enums.js"
+import {Ubication, Type, Race, Material, TransactionType} from "./enums.js"
+import { Client } from "./client.js"
+import { Merchant } from "./merchant.js"
+import { Product } from "./product.js"
+
 
 
 /**
@@ -95,4 +99,32 @@ export interface Inquire<T> {
    * @returns The information of the entity
    */
   getEntityInfo(type: T) : string;
+}
+
+
+export interface TransactionRecord {
+  /**
+   * Represents the date of the transaction
+   */
+  date: Date;
+  /**
+   * Represents the type of a transaction
+   */
+  type: TransactionType;
+  /**
+   * Represents who makes the transaction
+   */
+  entity: Client | Merchant;
+  /**
+   * Represents the products that makes the transaction
+   */
+  products: Product[];
+  /**
+   * Represents the price of atransaction
+   */
+  crowns: number;
+  /**
+   * Represents the reason of a transaction
+   */
+  reason?: string; // Optional for returns
 }

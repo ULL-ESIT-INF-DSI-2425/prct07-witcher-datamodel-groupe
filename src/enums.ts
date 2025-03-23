@@ -39,6 +39,9 @@ export enum Material {
   Espejo = "Espejo de cristal oscuro"
 }
 
+/**
+ * Enum for identify merchant type
+ */
 export enum Type {
   Herrero = "Herrero",
   Alquimista = "Alquimista",
@@ -62,6 +65,9 @@ export enum Type {
   Cartografo= "Cartografo"
 }
 
+/**
+ * Enum for identify races
+ */
 export enum Race {
   Humano = "Humano",
   Elfo = "Elfo",
@@ -83,4 +89,13 @@ export enum Race {
   Dragon = "Dragon",
   Revenant = "Revenant",
   Gargola = "Gargola",
+}
+
+/**
+ * Enum for identify transaction types
+ */
+export enum TransactionType {
+  Sale = "Venta",
+  Purchase = "Compra",
+  Return = "Devolución",
 }

@@ -1,21 +1,8 @@
 import { Product } from "./product.js";
 import { Client } from "./client.js";
 import { Merchant } from "./merchant.js";
-
-export enum TransactionType {
-  Sale = "Venta",
-  Purchase = "Compra",
-  Return = "Devolución",
-}
-
-export interface TransactionRecord {
-  date: Date;
-  type: TransactionType;
-  entity: Client | Merchant;
-  products: Product[];
-  crowns: number;
-  reason?: string; // Optional for returns
-}
+import { TransactionType } from "./enums.js";
+import { TransactionRecord } from "./interfaces.js"
 
 export class Transaction {
   private records: TransactionRecord[] = [];
@@ -76,5 +63,49 @@ export class Transaction {
    */
   getRecords(): TransactionRecord[] {
     return this.records;
+  }
+
+  /**
+   * Find the product with more appereances in the transactions
+   * @returns String qith the result
+   */
+  public MostAppear(): string {
+    const productCount: Record<string, number> = {};
+
+    this.records.forEach((record) => {
+      record.products.forEach((product) => {
+        productCount[product.name] = (productCount[product.name] || 0) + 1;
+      });
+    });
+
+    const mostFrequentProduct = Object.entries(productCount).reduce((a, b) => (b[1] > a[1] ? b : a), ["", 0]);
+
+    return mostFrequentProduct[0]
+      ? `El producto más frecuente es "${mostFrequentProduct[0]}" con ${mostFrequentProduct[1]} apariciones.`
+      : "No hay productos en las transacciones.";
+  }
+
+  /**
+   * Calculate the total earns
+   * @returns String with total earns
+  */
+  public Earns(): string {
+    const totalEarns = this.records
+      .filter((record) => record.type === TransactionType.Sale)
+      .reduce((sum, record) => sum + record.crowns, 0);
+
+    return `El total de ingresos por ventas es de ${totalEarns} coronas.`;
+  }
+
+  /**
+   * Calculate the total spends
+   * @returns String with total spends
+   */
+  public Spends(): string {
+    const totalSpends = this.records
+      .filter((record) => record.type === TransactionType.Purchase)
+      .reduce((sum, record) => sum + record.crowns, 0);
+
+    return `El total de gastos en adquisiciones es de ${totalSpends} coronas.`;
   }
 }
