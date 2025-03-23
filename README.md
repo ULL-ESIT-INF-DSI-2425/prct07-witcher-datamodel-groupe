@@ -1,6 +1,15 @@
 ### Práctica 7 - The Witcher Data Model
 ---
-### Jean Franco Hernández García, Eduardo Santander Restrepo y Diego Hernández Toledo
+## Información del grupo
+
+- **Nombre:** Jean Franco Hernández García
+- **Correo electrónico:** alu0101538853@ull.edu.es
+
+- **Nombre:** Eduardo Santander Restrepo
+- **Correo electrónico:** alu0101565590@ull.edu.es
+  
+- **Nombre:** Diego Hernández Toledo
+- **Correo electrónico:** alu0101550183@ull.edu.es
 
 [![CI Tests](https://github.com/ULL-ESIT-INF-DSI-2425/prct07-witcher-datamodel-groupe/actions/workflows/ci.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2425/prct07-witcher-datamodel-groupe/actions/workflows/ci.yml)
 
