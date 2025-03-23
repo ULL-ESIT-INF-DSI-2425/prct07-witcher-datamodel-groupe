@@ -23,7 +23,7 @@ describe("Transaction Class test", () => {
   it("Should register a sale transaction", () => {
     transaction.registerSale(client, [product1, product2], 350);
 
-    const records = transaction.getRecords();
+    const records = transaction.records;
     expect(records.length).toBe(1);
     expect(records[0].type).toBe(TransactionType.Sale);
     expect(records[0].entity).toBe(client);
@@ -35,7 +35,7 @@ describe("Transaction Class test", () => {
   it("Should register a purchase transaction", () => {
     transaction.registerPurchase(merchant, [product1], 150);
 
-    const records = transaction.getRecords();
+    const records = transaction.records;
     expect(records.length).toBe(1);
     expect(records[0].type).toBe(TransactionType.Purchase);
     expect(records[0].entity).toBe(merchant);
@@ -46,7 +46,7 @@ describe("Transaction Class test", () => {
   it("Should register a return transaction", () => {
     transaction.registerReturn(client, [product2], 200, "Defective product");
 
-    const records = transaction.getRecords();
+    const records = transaction.records;
     expect(records.length).toBe(1);
     expect(records[0].type).toBe(TransactionType.Return);
     expect(records[0].entity).toBe(client);
@@ -59,7 +59,7 @@ describe("Transaction Class test", () => {
     transaction.registerSale(client, [product1], 150);
     transaction.registerPurchase(merchant, [product2], 200);
 
-    const records = transaction.getRecords();
+    const records = transaction.records;
     expect(records.length).toBe(2);
   });
 

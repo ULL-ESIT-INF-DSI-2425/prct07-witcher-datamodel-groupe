@@ -72,9 +72,9 @@ export class Transaction {
    * Retrieves all transaction records.
    * @returns An array of transaction records.
    */
-  getRecords(): TransactionRecord[] {
-    return this.records;
-  }
+  // getRecords(): TransactionRecord[] {
+  //   return this.records;
+  // }
 
   /**
    * Find the product with more appereances in the transactions

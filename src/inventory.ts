@@ -113,7 +113,7 @@ export class Inventory {
    * @returns Array with transactions
    */
   public TotalRecord(person: Client | Merchant): string {
-    const records = this._transactions.getRecords().filter((record) => record.entity === person);
+    const records = this._transactions.records.filter((record) => record.entity === person);
     if (records.length === 0) {
       return `No se encontraron transacciones para ${person instanceof Client ? "el cliente" : "el mercader"} con ID ${person.id}.`;
     }
