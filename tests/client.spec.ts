@@ -25,12 +25,20 @@ describe("Client Class test", () => {
     expect(client.ubication).toBe(Ubication.Novigrado);
   });
 
+  it("Should return the length of the collection attribute", () => {
+    expect(client.getCollectionLenght()).toBe(0);
+  });
+
   it("Should add a client to the collection atribute in the super class", () => {
     const newClient = new Client(2, "Triss", Race.Humano, Ubication.Oxenfurt);
     const result = client.addEntity(newClient);
 
     expect(result).toBe(true);
     expect(client.collection).toContain(newClient);
+  });
+
+  it("Should return the length of the collection attribute", () => {
+    expect(client.getCollectionLenght()).toBe(1);
   });
 
   it("Should remove a client from the collection in the super class", () => {

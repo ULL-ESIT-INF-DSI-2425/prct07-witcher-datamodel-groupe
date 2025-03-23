@@ -26,7 +26,7 @@ export abstract class EntityCollection<T extends IClients | IMerchants | IProduc
    * @returns the number of products in the collection.
    * @returns 0 if the collection is empty.
    */
-  getNumberOfProducts() {
+  getCollectionLenght() {
     return this.collection.length;
   }
   

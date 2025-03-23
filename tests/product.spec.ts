@@ -31,12 +31,20 @@ describe("Product Class test", () => {
     expect(product.crowns).toBe(200);
   });
 
+  it("Should return the length of the collection attribute", () => {
+    expect(product.getCollectionLenght()).toBe(0);
+  });
+
   it("Should add a product to the collection attribute in the super class", () => {
     const newProduct = new Product(3, "Casco Humano", "Un doble craneo", Material.Huesos, 2.0, 100);
     const result = product.addEntity(newProduct);
 
     expect(result).toBe(true);
     expect(product.collection).toContain(newProduct);
+  });
+
+  it("Should return the length of the collection attribute", () => {
+    expect(product.getCollectionLenght()).toBe(1);
   });
 
   it("Should remove a product from the collection in the super class", () => {

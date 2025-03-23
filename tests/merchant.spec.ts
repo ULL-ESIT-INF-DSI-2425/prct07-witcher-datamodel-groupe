@@ -25,12 +25,20 @@ describe("Merchant Class test", () => {
     expect(merchant.ubication).toBe(Ubication.Velen);
   });
 
+  it("Should return the length of the collection attribute", () => {
+    expect(merchant.getCollectionLenght()).toBe(0);
+  });
+
   it("Should add a merchant to the collection attribute in the super class", () => {
     const newMerchant = new Merchant(3, "Abigail", Type.Alquimista, Ubication.Oxenfurt);
     const result = merchant.addEntity(newMerchant);
 
     expect(result).toBe(true);
     expect(merchant.collection).toContain(newMerchant);
+  });
+
+  it("Should return the length of the collection attribute", () => {
+    expect(merchant.getCollectionLenght()).toBe(1);
   });
 
   it("Should remove a merchant from the collection in the super class", () => {
