@@ -3,11 +3,13 @@ import { Product } from "./product.js"
 import { Client } from "./client.js"
 import { EntityCollection } from "./entityCollection.js"
 import { Transaction } from "./transaction.js"
+import { ProductCollection } from "./productCollection.js"
+import { ClientCollection } from "./clientCollection.js"
 
 /**
- * Abstract class that represents the inventory of a store
+ * Class that represents the inventory of a store
  */
-export abstract class Inventory {
+export class Inventory {
   /**
    * Constructor of the class
    * @param _merchants - Merchants collection
@@ -18,8 +20,8 @@ export abstract class Inventory {
    */
   constructor(
     private _merchants: EntityCollection<Merchant>, 
-    private _products: EntityCollection<Product>, 
-    private _clients: EntityCollection<Client>,
+    private _products: ProductCollection, 
+    private _clients: ClientCollection,
     private _transactions: Transaction 
   ) { 
   }
@@ -44,7 +46,7 @@ export abstract class Inventory {
    * Getter of the products collection
    * @returns Products collection
    */
-  public getProducts(): EntityCollection<Product> {
+  public getProducts(): ProductCollection {
     return this._products;
   }
 
@@ -52,7 +54,7 @@ export abstract class Inventory {
    * Setter of the products collection
    * @param products - Products collection
    */
-  public setProducts(products: EntityCollection<Product>): void {
+  public setProducts(products: ProductCollection): void {
     this._products = products;
   }
 
@@ -60,7 +62,7 @@ export abstract class Inventory {
    * Getter of the clients collection
    * @returns Clients collection
    */
-  public getClients(): EntityCollection<Client> {
+  public getClients(): ClientCollection {
     return this._clients;
   }
 
@@ -68,7 +70,7 @@ export abstract class Inventory {
    * Setter of the clients collection
    * @param clients - Clients collection
    */
-  public setClients(clients: EntityCollection<Client>): void {
+  public setClients(clients: ClientCollection): void {
     this._clients = clients;
   }
   
