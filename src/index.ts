@@ -3,11 +3,14 @@ import { Product } from "./product.js";
 import { Merchant } from "./merchant.js";
 import { Client } from "./client.js";
 import { Material, Type, Race, Ubication } from "./enums.js";
+import { ProductCollection } from "./productCollection.js"
+import { MerchantCollection } from "./merchantCollection.js"
+import { ClientCollection } from "./clientCollection.js";
 
 // Colecciones de entidades
-const productCollection = new Product(0, "", "", Material.Acero, 0, 0);
-const merchantCollection = new Merchant(0, "", Type.Mercader_g, Ubication.Novigrado);
-const clientCollection = new Client(0, "", Race.Humano, Ubication.Cintra);
+const productCollection = new ProductCollection();
+const merchantCollection = new MerchantCollection();
+const clientCollection = new ClientCollection();
 
 async function mainMenu() {
   const choices = [
