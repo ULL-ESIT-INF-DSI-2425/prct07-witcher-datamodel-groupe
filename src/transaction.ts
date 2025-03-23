@@ -4,8 +4,19 @@ import { Merchant } from "./merchant.js";
 import { TransactionType } from "./enums.js";
 import { TransactionRecord } from "./interfaces.js"
 
+/**
+ * Represents a transaction.
+ */
 export class Transaction {
-  private records: TransactionRecord[] = [];
+  private _records: TransactionRecord[] = [];
+
+  get records(): TransactionRecord[] {
+    return this._records;
+  }
+
+  set records(value: TransactionRecord[]) {
+    this._records = value;
+  }
 
   /**
    * Registers a sale transaction.

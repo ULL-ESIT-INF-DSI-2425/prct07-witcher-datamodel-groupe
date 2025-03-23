@@ -1,0 +1,164 @@
+{
+  "products": [
+    {
+      "_id": 1,
+      "_name": "Espada de acero de Mahakam",
+      "_description": "Una espada forjada por los enanos de Mahakam.",
+      "_material": "Acero",
+      "_weight": 120,
+      "_crowns": 1200
+    },
+    {
+      "_id": 2,
+      "_name": "Poción de golondrina",
+      "_description": "Una poción que acelera la regeneración de salud.",
+      "_material": "Alquimia",
+      "_weight": 1,
+      "_crowns": 300
+    },
+    {
+      "_id": 3,
+      "_name": "Armadura de cuero endurecido",
+      "_description": "Una armadura ligera pero resistente.",
+      "_material": "Cuero",
+      "_weight": 150,
+      "_crowns": 1500
+    },
+    {
+      "_id": 4,
+      "_name": "Mutágenos de grifo",
+      "_description": "Un mutágeno raro obtenido de un grifo.",
+      "_material": "Mutagenos",
+      "_weight": 5,
+      "_crowns": 800
+    },
+    {
+      "_id": 5,
+      "_name": "Cristales de visión",
+      "_description": "Cristales mágicos utilizados en rituales.",
+      "_material": "Cristales",
+      "_weight": 10,
+      "_crowns": 500
+    },
+    {
+      "_id": 6,
+      "_name": "Huesos de wyvern",
+      "_description": "Huesos fuertes y ligeros, ideales para fabricar armas.",
+      "_material": "Huesos",
+      "_weight": 50,
+      "_crowns": 700
+    },
+    {
+      "_id": 7,
+      "_name": "Plumas de grifo",
+      "_description": "Plumas de un grifo, utilizadas en alquimia.",
+      "_material": "Plumas",
+      "_weight": 2,
+      "_crowns": 450
+    },
+    {
+      "_id": 8,
+      "_name": "Piedra del sol",
+      "_description": "Una piedra mágica que emite un brillo cálido.",
+      "_material": "Piedra",
+      "_weight": 25,
+      "_crowns": 1000
+    },
+    {
+      "_id": 9,
+      "_name": "Raíz de mandrágora",
+      "_description": "Una raíz rara utilizada en pociones.",
+      "_material": "Raiz",
+      "_weight": 3,
+      "_crowns": 200
+    },
+    {
+      "_id": 10,
+      "_name": "Viento de los ancestros",
+      "_description": "Un frasco que contiene el viento de tiempos antiguos.",
+      "_material": "Viento",
+      "_weight": 1,
+      "_crowns": 350
+    },
+    {
+      "_id": 11,
+      "_name": "Escamas de dragón",
+      "_description": "Escamas resistentes obtenidas de un dragón.",
+      "_material": "Escamas",
+      "_weight": 80,
+      "_crowns": 1200
+    },
+    {
+      "_id": 12,
+      "_name": "Madera de roble de las colinas grises",
+      "_description": "Madera de alta calidad utilizada en construcción.",
+      "_material": "Madera",
+      "_weight": 100,
+      "_crowns": 400
+    },
+    {
+      "_id": 13,
+      "_name": "Alquimia de sangre",
+      "_description": "Un ingrediente raro para pociones avanzadas.",
+      "_material": "Alquimia",
+      "_weight": 2,
+      "_crowns": 600
+    },
+    {
+      "_id": 14,
+      "_name": "Polvo de dragón",
+      "_description": "Un polvo mágico obtenido de dragones.",
+      "_material": "Polvo",
+      "_weight": 5,
+      "_crowns": 750
+    },
+    {
+      "_id": 15,
+      "_name": "Jugo de sangre de vampiro",
+      "_description": "Un líquido oscuro extraído de vampiros.",
+      "_material": "Jugo",
+      "_weight": 3,
+      "_crowns": 900
+    },
+    {
+      "_id": 16,
+      "_name": "Hielo de la tundra",
+      "_description": "Un bloque de hielo mágico que nunca se derrite.",
+      "_material": "Hielo",
+      "_weight": 20,
+      "_crowns": 500
+    },
+    {
+      "_id": 17,
+      "_name": "Fragmentos de meteorito",
+      "_description": "Fragmentos de un meteorito con propiedades mágicas.",
+      "_material": "Fragmentos",
+      "_weight": 30,
+      "_crowns": 1300
+    },
+    {
+      "_id": 18,
+      "_name": "Ceniza de la hoguera negra",
+      "_description": "Ceniza obtenida de una hoguera mágica.",
+      "_material": "Ceniza",
+      "_weight": 10,
+      "_crowns": 400
+    },
+    {
+      "_id": 19,
+      "_name": "Espejo de cristal oscuro",
+      "_description": "Un espejo mágico que refleja el alma.",
+      "_material": "Espejo",
+      "_weight": 15,
+      "_crowns": 1500
+    },
+    {
+      "_id": 20,
+      "_name": "Espada de plata de Kaer Morhen",
+      "_description": "Una espada de plata utilizada por los brujos.",
+      "_material": "Acero",
+      "_weight": 100,
+      "_crowns": 2000
+    }
+  ]
+}

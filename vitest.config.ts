@@ -7,6 +7,7 @@ export default defineConfig({
         'src/interfaces.ts', 
         'src/index.ts',      
         'src/enums.ts',     
+        'src/db/**'
       ],
     },
   },

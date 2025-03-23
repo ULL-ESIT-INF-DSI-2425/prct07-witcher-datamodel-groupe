@@ -3,20 +3,28 @@ import { Product } from "./product.js";
 import { Merchant } from "./merchant.js";
 import { Client } from "./client.js";
 import { Material, Type, Race, Ubication } from "./enums.js";
-import { ProductCollection } from "./productCollection.js"
-import { MerchantCollection } from "./merchantCollection.js"
-import { ClientCollection } from "./clientCollection.js";
+import { Inventory } from "./inventory.js";
+import { JsonProductCollection } from "./db/json-productCollection.js";
+import { JsonClientCollection } from "./db/json-clientCollection.js";
+import { JsonMerchantCollection } from "./db/json-merchantCollection.js";
+import { JsonTransactionCollection } from "./db/json-transactionCollection.js";
 
-// Colecciones de entidades
-const productCollection = new ProductCollection();
-const merchantCollection = new MerchantCollection();
-const clientCollection = new ClientCollection();
+
+// Entity collections
+const productCollection = new JsonProductCollection("./src/db/data/products.json");
+const merchantCollection = new JsonMerchantCollection("./src/db/data/merchants.json");
+const clientCollection = new JsonClientCollection("./src/db/data/clients.json");
+const transaction = new JsonTransactionCollection("./src/db/data/transactions.json");
+
+
+const inventory = new Inventory(merchantCollection, productCollection, clientCollection, transaction);
 
 async function mainMenu() {
   const choices = [
     "Gestionar productos",
     "Gestionar mercaderes",
     "Gestionar clientes",
+    "Gestionar inventario",
     "Salir",
   ];
 
@@ -39,15 +47,18 @@ async function mainMenu() {
     case "Gestionar clientes":
       await manageClients();
       break;
+    case "Gestionar inventario":
+      await manageInventory();
+      break;
     case "Salir":
       console.log("¡Hasta luego!");
       return;
   }
 
-  await mainMenu(); // Volver al menú principal
+  await mainMenu();
 }
 
-// Gestión de productos
+// Product management
 async function manageProducts() {
   const choices = [
     "Agregar producto",
@@ -87,7 +98,7 @@ async function manageProducts() {
       return;
   }
 
-  await manageProducts(); // Volver al menú de productos
+  await manageProducts();
 }
 
 async function addProduct() {
@@ -229,7 +240,7 @@ async function searchProducts() {
   console.table(filteredProducts);
 }
 
-// Gestión de mercaderes
+// Merchant management
 async function manageMerchants() {
   const choices = [
     "Agregar mercader",
@@ -269,7 +280,7 @@ async function manageMerchants() {
       return;
   }
 
-  await manageMerchants(); // Volver al menú de mercaderes
+  await manageMerchants();
 }
 
 async function addMerchant() {
@@ -377,7 +388,7 @@ async function searchMerchants() {
   console.table(results);
 }
 
-// Gestión de clientes
+// Client management
 async function manageClients() {
   const choices = [
     "Agregar cliente",
@@ -417,7 +428,7 @@ async function manageClients() {
       return;
   }
 
-  await manageClients(); // Volver al menú de clientes
+  await manageClients();
 }
 
 async function addClient() {
@@ -525,7 +536,112 @@ async function searchClients() {
   console.table(results);
 }
 
-// Funciones auxiliares
+async function manageInventory() {
+  const choices = [
+    "Verificar si un producto está en el inventario",
+    "Ver los productos más demandados",
+    "Consultar el total de ingresos",
+    "Consultar el total de gastos",
+    "Consultar el historial de transacciones de un cliente o mercader",
+    "Volver al menú principal",
+  ];
+
+  const { action } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "action",
+      message: "¿Qué acción deseas realizar?",
+      choices,
+    },
+  ]);
+
+  switch (action) {
+    case "Verificar si un producto está en el inventario":
+      await checkProductInStock();
+      break;
+    case "Ver los productos más demandados":
+      viewMostDemandedProducts();
+      break;
+    case "Consultar el total de ingresos":
+      viewTotalEarns();
+      break;
+    case "Consultar el total de gastos":
+      viewTotalSpends();
+      break;
+    case "Consultar el historial de transacciones de un cliente o mercader":
+      await viewTransactionHistory();
+      break;
+    case "Volver al menú principal":
+      return;
+  }
+
+  await manageInventory();
+}
+
+async function checkProductInStock() {
+  const { id } = await inquirer.prompt([
+    { type: "input", name: "id", message: "ID del producto a verificar:", validate: validateNumber },
+  ]);
+
+  const product = productCollection.collection.find((p) => p.id === parseInt(id));
+  if (!product) {
+    console.log("No se encontró un producto con ese ID.");
+    return;
+  }
+
+  const isInStock = inventory.stock(product);
+  console.log(isInStock ? "El producto está en el inventario." : "El producto no está en el inventario.");
+}
+
+function viewMostDemandedProducts() {
+  const result = inventory.MostFamousProducts();
+  console.log(result);
+}
+
+function viewTotalEarns() {
+  const result = inventory.TotalEarns();
+  console.log(result);
+}
+
+function viewTotalSpends() {
+  const result = inventory.TotalSpends();
+  console.log(result);
+}
+
+async function viewTransactionHistory() {
+  const { entityType } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "entityType",
+      message: "¿Deseas consultar el historial de un cliente o un mercader?",
+      choices: ["Cliente", "Mercader"],
+    },
+  ]);
+
+  const { id } = await inquirer.prompt([
+    { type: "input", name: "id", message: `ID del ${entityType.toLowerCase()} a consultar:`, validate: validateNumber },
+  ]);
+
+  let entity;
+  if (entityType === "Cliente") {
+    entity = clientCollection.collection.find((c) => c.id === parseInt(id));
+    if (!entity) {
+      console.log("No se encontró un cliente con ese ID.");
+      return;
+    }
+  } else {
+    entity = merchantCollection.collection.find((m) => m.id === parseInt(id));
+    if (!entity) {
+      console.log("No se encontró un mercader con ese ID.");
+      return;
+    }
+  }
+
+  const history = inventory.TotalRecord(entity);
+  console.log(history);
+}
+
+// Auxiliary functions
 function validateNumber(input: string) {
   return !isNaN(parseFloat(input)) || "Por favor, introduce un número válido.";
 }

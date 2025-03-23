@@ -1,0 +1,64 @@
+{
+  "merchants": [
+    {
+      "_id": 1,
+      "_name": "Hattori",
+      "_type": "Herrero",
+      "_ubication": "Novigrado"
+    },
+    {
+      "_id": 2,
+      "_name": "Fergus Graem",
+      "_type": "Armero",
+      "_ubication": "Velen"
+    },
+    {
+      "_id": 3,
+      "_name": "Éibhear Hattori",
+      "_type": "Herrero",
+      "_ubication": "Cintra"
+    },
+    {
+      "_id": 4,
+      "_name": "Yoana",
+      "_type": "Armero",
+      "_ubication": "Velen"
+    },
+    {
+      "_id": 5,
+      "_name": "Ibrahim Savi",
+      "_type": "Mercader",
+      "_ubication": "Skellige"
+    },
+    {
+      "_id": 6,
+      "_name": "Marcus Hodgson",
+      "_type": "Cartero",
+      "_ubication": "Novigrado"
+    },
+    {
+      "_id": 7,
+      "_name": "Elihal",
+      "_type": "Sastre",
+      "_ubication": "Novigrado"
+    },
+    {
+      "_id": 8,
+      "_name": "Bertram Tauler",
+      "_type": "Curandero",
+      "_ubication": "Oxenfurt"
+    },
+    {
+      "_id": 9,
+      "_name": "Jonah",
+      "_type": "Alquimista",
+      "_ubication": "Velen"
+    },
+    {
+      "_id": 10,
+      "_name": "Bruno",
+      "_type": "Tabernero",
+      "_ubication": "Toussaint"
+    }
+  ]
+}

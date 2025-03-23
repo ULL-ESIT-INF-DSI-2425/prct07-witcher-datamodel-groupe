@@ -1,0 +1,64 @@
+{
+  "clients": [
+    {
+      "_id": 1,
+      "_name": "Geralt de Rivia",
+      "_race": "Brujo",
+      "_ubication": "Morhen"
+    },
+    {
+      "_id": 2,
+      "_name": "Yennefer de Vengerberg",
+      "_race": "Humana",
+      "_ubication": "Vengerberg"
+    },
+    {
+      "_id": 3,
+      "_name": "Triss Merigold",
+      "_race": "Humana",
+      "_ubication": "Novigrado"
+    },
+    {
+      "_id": 4,
+      "_name": "Ciri",
+      "_race": "Humana",
+      "_ubication": "Cintra"
+    },
+    {
+      "_id": 5,
+      "_name": "Jaskier",
+      "_race": "Humano",
+      "_ubication": "Oxenfurt"
+    },
+    {
+      "_id": 6,
+      "_name": "Zoltan Chivay",
+      "_race": "Enano",
+      "_ubication": "Novigrado"
+    },
+    {
+      "_id": 7,
+      "_name": "Vesemir",
+      "_race": "Brujo",
+      "_ubication": "Morhen"
+    },
+    {
+      "_id": 8,
+      "_name": "Emhyr var Emreis",
+      "_race": "Humano",
+      "_ubication": "Nilfgaard"
+    },
+    {
+      "_id": 9,
+      "_name": "Philippa Eilhart",
+      "_race": "Hechicera",
+      "_ubication": "Redania"
+    },
+    {
+      "_id": 10,
+      "_name": "Dijkstra",
+      "_race": "Humano",
+      "_ubication": "Redania"
+    }
+  ]
+}

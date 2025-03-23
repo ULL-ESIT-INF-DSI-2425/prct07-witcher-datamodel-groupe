@@ -1,6 +1,9 @@
 import { EntityCollection } from './entityCollection.js';
 import { Merchant } from './merchant.js';
 
+/**
+ * Class that represents a collection of merchants
+ */
 export class MerchantCollection extends EntityCollection<Merchant> {
   constructor() {
     super();

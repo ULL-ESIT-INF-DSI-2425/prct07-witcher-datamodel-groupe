@@ -1,0 +1,222 @@
+{
+  "transactions": [
+    {
+      "_date": "2025-03-23T10:00:00.000Z",
+      "_type": "Sale",
+      "_entity": {
+        "_id": 1,
+        "_name": "Geralt de Rivia",
+        "_race": "Brujo",
+        "_ubication": "Kaer Morhen"
+      },
+      "_products": [
+        {
+          "_id": 1,
+          "_name": "Espada de acero",
+          "_description": "Una espada forjada en Mahakam.",
+          "_material": "Acero",
+          "_weight": 3.5,
+          "_crowns": 1200
+        }
+      ],
+      "_crowns": 1200,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-24T15:30:00.000Z",
+      "_type": "Purchase",
+      "_entity": {
+        "_id": 2,
+        "_name": "Hattori",
+        "_type": "Herrero",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 2,
+          "_name": "Poción de golondrina",
+          "_description": "Una poción que regenera vitalidad.",
+          "_material": "Alquimia",
+          "_weight": 0.5,
+          "_crowns": 300
+        }
+      ],
+      "_crowns": 300,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-25T12:00:00.000Z",
+      "_type": "Sale",
+      "_entity": {
+        "_id": 3,
+        "_name": "Triss Merigold"
+      },
+      "_products": [
+        {
+          "_id": 3,
+          "_name": "Armadura de cuero endurecido",
+          "_description": "Una armadura ligera pero resistente.",
+          "_material": "Cuero",
+          "_weight": 15,
+          "_crowns": 1500
+        }
+      ],
+      "_crowns": 1500,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-23T14:00:00.000Z",
+      "_type": "Purchase",
+      "_entity": {
+        "_id": 4,
+        "_name": "Hattori",
+        "_type": "Herrero",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 4,
+          "_name": "Mutágenos de grifo",
+          "_description": "Un mutágeno raro obtenido de un grifo.",
+          "_material": "Mutagenos",
+          "_weight": 5,
+          "_crowns": 800
+        }
+      ],
+      "_crowns": 800,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-24T16:00:00.000Z",
+      "_type": "Purchase",
+      "_entity": {
+        "_id": 5,
+        "_name": "Yoana",
+        "_type": "Herrera",
+        "_ubication": "Kaer Morhen"
+      },
+      "_products": [
+        {
+          "_id": 5,
+          "_name": "Cristales de visión",
+          "_description": "Cristales mágicos utilizados en rituales.",
+          "_material": "Cristales",
+          "_weight": 10,
+          "_crowns": 500
+        }
+      ],
+      "_crowns": 500,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-25T18:00:00.000Z",
+      "_type": "Purchase",
+      "_entity": {
+        "_id": 6,
+        "_name": "Zoltan Chivay",
+        "_type": "Mercader",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 6,
+          "_name": "Huesos de wyvern",
+          "_description": "Huesos fuertes y ligeros, ideales para fabricar armas.",
+          "_material": "Huesos",
+          "_weight": 50,
+          "_crowns": 700
+        }
+      ],
+      "_crowns": 700,
+      "_reason": null
+    },
+    {
+      "_date": "2025-03-23T20:00:00.000Z",
+      "_type": "Return",
+      "_entity": {
+        "_id": 7,
+        "_name": "Geralt de Rivia",
+        "_race": "Brujo",
+        "_ubication": "Kaer Morhen"
+      },
+      "_products": [
+        {
+          "_id": 7,
+          "_name": "Plumas de grifo",
+          "_description": "Plumas de un grifo, utilizadas en alquimia.",
+          "_material": "Plumas",
+          "_weight": 2,
+          "_crowns": 450
+        }
+      ],
+      "_crowns": 450,
+      "_reason": "Producto defectuoso"
+    },
+    {
+      "_date": "2025-03-24T21:00:00.000Z",
+      "_type": "Return",
+      "_entity": {
+        "_id": 8,
+        "_name": "Yennefer de Vengerberg",
+        "_race": "Hechicera",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 8,
+          "_name": "Piedra del sol",
+          "_description": "Una piedra mágica que emite un brillo cálido.",
+          "_material": "Piedra",
+          "_weight": 25,
+          "_crowns": 1000
+        }
+      ],
+      "_crowns": 1000,
+      "_reason": "No cumple con las expectativas"
+    },
+    {
+      "_date": "2025-03-25T22:00:00.000Z",
+      "_type": "Return",
+      "_entity": {
+        "_id": 9,
+        "_name": "Triss Merigold",
+        "_race": "Hechicera",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 9,
+          "_name": "Raíz de mandrágora",
+          "_description": "Una raíz rara utilizada en pociones.",
+          "_material": "Raiz",
+          "_weight": 3,
+          "_crowns": 200
+        }
+      ],
+      "_crowns": 200,
+      "_reason": "Error en el pedido"
+    },
+    {
+      "_date": "2025-03-26T10:00:00.000Z",
+      "_type": "Sale",
+      "_entity": {
+        "_id": 10,
+        "_name": "Ciri",
+        "_race": "Hechicera",
+        "_ubication": "Novigrado"
+      },
+      "_products": [
+        {
+          "_id": 10,
+          "_name": "Espada de plata",
+          "_description": "Una espada diseñada para cazar monstruos.",
+          "_material": "Plata",
+          "_weight": 4.0,
+          "_crowns": 2000
+        }
+      ],
+      "_crowns": 2000,
+      "_reason": null
+    }
+  ]
+}
