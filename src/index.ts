@@ -71,9 +71,9 @@ async function manageProducts() {
     case "Eliminar producto":
       await removeProduct();
       break;
-    // case "Modificar producto":
-    //   await modifyProduct();
-    //   break;
+    case "Modificar producto":
+      await modifyProduct();
+      break;
     case "Listar productos":
       listProducts();
       break;
@@ -131,6 +131,40 @@ async function removeProduct() {
   }
 }
 
+async function modifyProduct() {
+  const { id } = await inquirer.prompt([
+    { type: "input", name: "id", message: "ID del producto a modificar:", validate: validateNumber },
+  ]);
+
+  const product = productCollection.collection.find((p) => p.id === parseInt(id));
+  if (!product) {
+    console.log("No se encontró un producto con ese ID.");
+    return;
+  }
+
+  const answers = await inquirer.prompt([
+    { type: "input", name: "name", message: `Nombre (${product.name}):`, default: String(product.name) },
+    { type: "input", name: "description", message: `Descripción (${product.description}):`, default: String(product.description) },
+    {
+      type: "list",
+      name: "material",
+      message: `Material (${product.material}):`,
+      choices: Object.values(Material),
+      default: product.material as Material,
+    },
+    { type: "input", name: "weight", message: `Peso (${product.weight}):`, default: String(product.weight), validate: validateNumber },
+    { type: "input", name: "crowns", message: `Precio en coronas (${product.crowns}):`, default: String(product.crowns), validate: validateNumber },
+  ]);
+
+  product.name = answers.name;
+  product.description = answers.description;
+  product.material = answers.material as Material;
+  product.weight = parseFloat(answers.weight);
+  product.crowns = parseFloat(answers.crowns);
+
+  console.log("Producto modificado correctamente.");
+}
+
 async function listProducts() {
   console.log("Productos en la colección:");
   console.table(productCollection.collection);
@@ -147,9 +181,49 @@ async function searchProducts() {
     { type: "input", name: "value", message: "Valor del atributo:" },
   ]);
 
-  const results = productCollection.getProductsByAttribute(attribute as keyof Product, parseValue(attribute, value));
+  const filteredProducts = productCollection.collection.filter(
+    (product) => product[attribute as keyof Product] == parseValue(attribute, value)
+  );
+
+  if (filteredProducts.length === 0) {
+    console.log("No se encontraron productos con ese criterio.");
+    return;
+  }
+
+  const { sortOption } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "sortOption",
+      message: "¿Cómo deseas ordenar los resultados?",
+      choices: [
+        "Alfabéticamente (ascendente)",
+        "Alfabéticamente (descendente)",
+        "Por valor en coronas (ascendente)",
+        "Por valor en coronas (descendente)",
+        "Sin ordenar",
+      ],
+    },
+  ]);
+
+  switch (sortOption) {
+    case "Alfabéticamente (ascendente)":
+      filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "Alfabéticamente (descendente)":
+      filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "Por valor en coronas (ascendente)":
+      filteredProducts.sort((a, b) => a.crowns - b.crowns);
+      break;
+    case "Por valor en coronas (descendente)":
+      filteredProducts.sort((a, b) => b.crowns - a.crowns);
+      break;
+    case "Sin ordenar":
+      break;
+  }
+
   console.log("Resultados de la búsqueda:");
-  console.table(results);
+  console.table(filteredProducts);
 }
 
 // Gestión de mercaderes
@@ -300,10 +374,6 @@ async function searchMerchants() {
   console.table(results);
 }
 
-
-// Implementa las funciones `removeMerchant`, `modifyMerchant`, `listMerchants`, y `searchMerchants`
-// Similar a las funciones de productos, pero adaptadas para `Merchant`
-
 // Gestión de clientes
 async function manageClients() {
   const choices = [
@@ -451,10 +521,6 @@ async function searchClients() {
   console.log("Resultados de la búsqueda:");
   console.table(results);
 }
-
-
-// Implementa las funciones `removeClient`, `modifyClient`, `listClients`, y `searchClients`
-// Similar a las funciones de productos, pero adaptadas para `Client`
 
 // Funciones auxiliares
 function validateNumber(input: string) {
